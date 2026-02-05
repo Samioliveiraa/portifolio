@@ -1,0 +1,214 @@
+/* =====================================
+   JOGO DE LANÇAMENTO DE PROJÉTEIS
+   Samila F. da S. Oliveira
+===================================== */
+
+/* ---------- Layout geral ---------- */
+
+.jogo-projeteis {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .jogo-projeteis {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Canvas ---------- */
+
+.simulacao-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas-projeteis {
+  width: 100%;
+  max-width: 820px;
+  aspect-ratio: 3 / 2;
+
+  background: linear-gradient(
+    to top,
+    #e0f2fe 0%,
+    #f8fafc 65%
+  );
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Painel de controles ---------- */
+
+.jogo-controles {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.6rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+}
+
+.jogo-controles h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Grupos ---------- */
+
+.jogo-grupo {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.jogo-grupo.titulo {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Labels e inputs ---------- */
+
+.jogo-controles label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.jogo-controles input[type="number"],
+.jogo-controles input[type="range"],
+.jogo-controles input[type="color"],
+.jogo-controles select {
+  padding: 0.5rem 0.6rem;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+
+  font-size: 0.9rem;
+  background: var(--bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jogo-controles input[type="range"] {
+  padding: 0;
+}
+
+.jogo-controles input:focus,
+.jogo-controles select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ---------- Checkboxes ---------- */
+
+.jogo-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.jogo-checkbox input {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+/* ---------- Botões ---------- */
+
+.jogo-acoes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.jogo-acoes button {
+  padding: 0.65rem 0.8rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  border-radius: 12px;
+  border: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Botão principal */
+.jogo-acoes .btn-lancar {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+}
+
+.jogo-acoes .btn-lancar:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Botões secundários */
+.jogo-acoes .btn-reset,
+.jogo-acoes .btn-salvar {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.jogo-acoes .btn-reset:hover,
+.jogo-acoes .btn-salvar:hover {
+  background: #e5e7eb;
+}
+
+/* ---------- Feedback / estado ---------- */
+
+.jogo-status {
+  font-size: 0.8rem;
+  color: #475569;
+  margin-top: 0.6rem;
+}
+
+/* ---------- Alvo ---------- */
+
+.alvo-info {
+  font-size: 0.85rem;
+  padding: 0.6rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px dashed var(--border);
+  color: #334155;
+}
+
+/* ---------- Gráfico ---------- */
+
+.grafico-container {
+  margin-top: 2.2rem;
+
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  padding: 1.6rem;
+}
+
+.grafico-container h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Queda Livre | Samila</title>
+    <meta name="description" content="Simulação computacional do experimento de queda livre">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/simulacoes.css">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<!-- MathJax para equações -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']]
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<body>
+
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+            
+                </ul>
+            </li>
+
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section simulador">
+
+    <h2 class="section-title">Queda Livre</h2>
+
+    <section class="descricao-experimento">
+        <p>
+            O experimento da queda livre descreve o movimento de um corpo submetido
+            exclusivamente à ação do campo gravitacional, desprezando-se efeitos de
+            resistência do ar e outras forças dissipativas. Esse modelo fornece uma
+            das descrições mais simples e fundamentais do movimento retilíneo uniformemente
+            variado.
+        </p>
+
+        <p>
+            Considerando o eixo vertical orientado positivamente para cima, a dinâmica do
+            sistema é governada pela segunda lei de Newton:
+        </p>
+
+        <p class="equacao">
+            \[
+                m\,\frac{d^2y}{dt^2} = -\,m g
+            \]
+        </p>
+
+        <p>
+            onde <strong>\(y(t)\)</strong> representa a posição vertical do corpo,
+            <strong>\(m\)</strong> é a massa e <strong>\(g\)</strong> é a aceleração da
+            gravidade, considerada constante nas proximidades da superfície terrestre.
+            Observa-se que a massa se cancela, evidenciando que, na ausência de forças
+            dissipativas, todos os corpos em queda livre apresentam a mesma aceleração.
+        </p>
+
+        <p>
+            Integrando a equação de movimento, obtém-se a expressão para a velocidade em
+            função do tempo:
+        </p>
+
+        <p class="equacao">
+            \[
+                v(t) = v_0 - g t
+            \]
+        </p>
+
+        <p>
+            onde <strong>\(v_0\)</strong> é a velocidade inicial do corpo. Uma nova integração
+            fornece a posição em função do tempo:
+        </p>
+
+        <p class="equacao">
+            \[
+                y(t) = y_0 + v_0 t - \frac{1}{2} g t^2
+            \]
+        </p>
+
+        <p>
+            Nessas expressões, <strong>\(y_0\)</strong> representa a posição inicial do corpo.
+            No caso particular da queda livre a partir do repouso
+            \(\left(v_0 = 0\right)\), o movimento é caracterizado por um aumento quadrático
+            da distância percorrida com o tempo.
+        </p>
+
+        <p>
+            Do ponto de vista energético, a queda livre pode ser analisada por meio da
+            conversão entre energia potencial gravitacional e energia cinética. A energia
+            potencial gravitacional é dada por:
+        </p>
+
+        <p class="equacao">
+            \[
+                E_p = m g y
+            \]
+        </p>
+
+        <p>
+            enquanto a energia cinética do corpo é expressa por:
+        </p>
+
+        <p class="equacao">
+            \[
+                E_c = \frac{1}{2} m v^2
+            \]
+        </p>
+
+        <p>
+            Na ausência de dissipação, a energia mecânica total do sistema permanece
+            constante ao longo do movimento, evidenciando o princípio da conservação
+            da energia.
+        </p>
+
+        <p>
+            A simulação computacional permite visualizar a evolução temporal da posição,
+            velocidade e energias do corpo em queda livre, possibilitando a verificação
+            direta das equações do movimento e a análise quantitativa do comportamento
+            dinâmico do sistema.
+        </p>
+
+        <p>
+            Em situações mais realistas, a queda livre pode envolver colisões do corpo
+            com uma superfície rígida, como o solo. Nesses casos, o comportamento do
+            sistema após o impacto é caracterizado pelo <strong>coeficiente de restituição</strong>,
+            que quantifica a fração da velocidade normal preservada após a colisão.
+        </p>
+
+        <p>
+            O coeficiente de restituição, usualmente denotado por <strong>\(e\)</strong>,
+            é definido como a razão entre o módulo da velocidade imediatamente após o
+            impacto e o módulo da velocidade imediatamente antes do impacto:
+        </p>
+
+         <p class="equacao">
+            \[
+                e = \frac{|v^{+}|}{|v^{-}|}
+            \]
+        </p>
+
+        <p>
+            onde <strong>\(v^{-}\)</strong> representa a velocidade da massa instantes antes
+            da colisão com o solo e <strong>\(v^{+}\)</strong> a velocidade logo após o impacto.
+            O coeficiente de restituição assume valores no intervalo
+            \(0 \leq e \leq 1\).
+        </p>
+
+        <p>
+            Para <strong>\(e = 1\)</strong>, a colisão é perfeitamente elástica, e não há perda
+            de energia mecânica durante o impacto. Nesse caso, a massa retorna à altura
+            inicial após cada colisão. Por outro lado, quando <strong>\(e = 0\)</strong>,
+            a colisão é perfeitamente inelástica, e o corpo não apresenta ressalto,
+            permanecendo em repouso após o choque.
+        </p>
+
+        <p>
+            Para valores intermediários de <strong>\(0 &lt; e &lt; 1\)</strong>, ocorre dissipação
+            parcial de energia mecânica a cada impacto. A velocidade imediatamente após
+            a colisão é reduzida segundo:
+        </p>
+
+        <p class="equacao">
+            \[
+                v^{+} = -\,e\,v^{-}
+            \]
+        </p>
+
+        <p>
+            Como consequência, a altura máxima atingida após cada ressalto decresce
+            progressivamente, uma vez que a energia potencial gravitacional associada
+            ao movimento diminui a cada colisão. Esse comportamento permite analisar,
+            de forma quantitativa, a dissipação de energia e a transição entre regimes
+            de colisão elástica e inelástica.
+        </p>
+
+        <p>
+            A inclusão do coeficiente de restituição na simulação possibilita o estudo
+            do movimento oscilatório vertical da massa após sucessivos impactos com o
+            solo, bem como a análise da conservação — ou não — da energia mecânica em
+            processos de colisão reais.
+        </p>
+
+    </section>
+
+
+    <p class="section-intro">
+        Simulação interativa do movimento de queda livre com colisão elástica.
+        Os parâmetros físicos podem ser ajustados em tempo real.
+    </p>
+
+    <div class="simulador-box">
+
+        <!-- Área da simulação -->
+        <section class="canvas-area">
+            <canvas id="canvas-simulacao" width="600" height="350"></canvas>
+            <p class="canvas-legenda">
+                Sistema de referência vertical (metros).
+            </p>
+        </section>
+
+        <!-- Painel de controle -->
+        <aside class="simulacao-container">
+
+            <h3 class="painel-title">Parâmetros físicos</h3>
+
+            <div class="campo">
+                <label for="altura">
+                    Altura inicial (m)
+                </label>
+                <input type="number" id="altura" min="0.1" step="0.1" value="10">
+            </div>
+
+            <div class="campo">
+                <label for="gravidade">
+                    Gravidade (m/s²): <span id="valorG">9.8</span>
+                </label>
+                <input type="number" id="gravidade" min="0" max="20" step="0.1" value="9.8">
+            </div>
+
+            <div class="campo">
+                <label for="elasticidade">
+                    Coeficiente de restituição (e): <span id="valorE">0.80</span>
+                </label>
+                <input type="number" id="elasticidade" min="0" max="1" step="0.05" value="0.8">
+            </div>
+
+            <div class="campo">
+                <label for="corBolinha">Cor da partícula</label>
+                <input type="color" id="corBolinha" value="#ec4899">
+            </div>
+
+            <div class="simulacao-form">
+                <button id="iniciar" class="btn">▶ Iniciar</button>
+                <button id="pausar" class="btn">⏸ Pausar</button>
+                <button id="resetar" class="btn btn-accent">⟲ Resetar</button>
+            </div>
+
+            <div class="simulacao-form">
+                <button id="salvarSimulacao" class="btn btn-outline">
+                    💾 Salvar Simulação PNG
+                </button>
+                <button id="salvarGrafico" class="btn btn-outline">
+                    📈 Salvar Gráfico PNG
+                </button>
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- Gráfico -->
+    <section class="grafico-section">
+        <h3>Velocidade × Tempo</h3>
+        <canvas id="grafico-velocidade" width="700" height="300"></canvas>
+    </section>
+
+    <section class="equacoes-section">
+    <h3>Modelo Físico</h3>
+
+    <p>
+        A simulação resolve numericamente as equações do movimento de queda livre:
+    </p>
+
+    <div class="equacoes">
+        <p>v(t + Δt) = v(t) + g · Δt</p>
+        <p>y(t + Δt) = y(t) − v(t) · Δt</p>
+    </div>
+
+    <div class="estado-atual">
+        <p><strong>Tempo:</strong> <span id="eq-tempo">0.00</span> s</p>
+        <p><strong>Altura:</strong> <span id="eq-altura">0.00</span> m</p>
+        <p><strong>Velocidade:</strong> <span id="eq-vel">0.00</span> m/s</p>
+    </div>
+    </section>
+
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<!-- JS da simulação -->
+<script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+<script src="https://unpkg.com/gif-capture@1.0.0/build/gif-capture.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gif-capture/dist/gif-capture.min.js"></script>
+<script src="../static/js/queda-livre.js"></script>
+
+</body>
+</html>

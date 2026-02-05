@@ -1,0 +1,141 @@
+/* ===============================
+   CONTROLES — CAMINHADA QUÂNTICA
+=============================== */
+
+.controles {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.grupo-controles {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.grupo-controles label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.grupo-controles input,
+.grupo-controles select {
+    margin-top: 0.4rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 0.95rem;
+    font-family: "Inter", sans-serif;
+    background: white;
+}
+
+.grupo-controles input:focus,
+.grupo-controles select:focus {
+    outline: none;
+    border-color: #6366f1;
+}
+
+/* ===============================
+   BOTÕES
+=============================== */
+
+.grupo-botoes {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.grupo-botoes button {
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    background: #6366f1;
+    color: white;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+/* Hover elegante */
+.grupo-botoes button:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+/* Clique */
+.grupo-botoes button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ===============================
+   BOTÕES ESPECÍFICOS
+=============================== */
+
+#btn-pausar {
+    background: #0ea5e9;
+}
+
+#btn-pausar:hover {
+    background: #0284c7;
+}
+
+#btn-passo {
+    background: #22c55e;
+}
+
+#btn-passo:hover {
+    background: #16a34a;
+}
+
+#btn-reset {
+    background: #ef4444;
+}
+
+#btn-reset:hover {
+    background: #dc2626;
+}
+
+/* ===============================
+   RESPONSIVO
+=============================== */
+
+@media (max-width: 768px) {
+    .controles {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .grupo-botoes {
+        justify-content: center;
+    }
+}
+
+#btn-salvar {
+    background: #64748b; /* cinza elegante */
+}
+
+#btn-salvar:hover {
+    background: #475569;
+}

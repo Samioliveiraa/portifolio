@@ -1,0 +1,111 @@
+/* ==================================================
+   LEIS DE NEWTON — ESTILO DA PÁGINA
+================================================== */
+
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+/* ===== TÍTULOS ===== */
+.section-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-intro {
+    max-width: 850px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #334155;
+    text-align: center;
+}
+
+/* ===== BLOCOS DE TEXTO ===== */
+.simulador-texto {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    padding: 2rem 2.2rem;
+    margin-bottom: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+.simulador-texto h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #020617;
+    margin-bottom: 1rem;
+}
+
+.simulador-texto h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.simulador-texto p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #334155;
+    margin-bottom: 1rem;
+}
+
+/* ===== EQUAÇÕES ===== */
+.equacao {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+
+/* ===== DESTAQUES EM TEXTO ===== */
+.simulador-texto strong {
+    color: #020617;
+    font-weight: 600;
+}
+
+.simulador-texto em {
+    color: #1d4ed8;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* ===== LINKS (se aparecerem) ===== */
+.simulador-texto a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.simulador-texto a:hover {
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .simulador-texto {
+        padding: 1.5rem;
+    }
+
+    .simulador-texto h3 {
+        font-size: 1.4rem;
+    }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Transformada de Fourier | Samila</title>
+    <meta name="description"
+        content="Portfólio pessoal de Samila, estudante e desenvolvedora em formação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/home.css">
+    <link rel="stylesheet" href="../static/css/difracao.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+        <!-- ===== MATHJAX ===== -->
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="../index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                        <li><a href="../modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="../publicacoes.html">Publicações</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+                <li><a href="../contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="section simulador">
+    
+    <h1 class="section-title">Transformada de Fourier</h1>
+    <p class="section-intro">Visualização no tempo e na frequência</p>
+    
+    <h2>Descrição física</h2>
+    <p>
+        Qualquer sinal periódico pode ser escrito como uma soma de ondas senoidais.
+        A Transformada de Fourier permite decompor um sinal no tempo em seus
+        componentes de frequência.
+    </p>
+
+    <p class="equacao">
+        x(t) = A₁ sen(2πf₁t) + A₂ sen(2πf₂t)
+    </p>
+
+    <p>
+        Para sinais discretos, utilizamos a Transformada Discreta de Fourier (DFT):
+    </p>
+
+    <p class="equacao">
+        Xₖ = ∑ₙ xₙ e<sup>-i2πkn/N</sup>
+    </p>
+
+    <section class="controles">
+        <h2>Parâmetros do sinal</h2>
+
+        <label>Amplitude A₁
+            <span class="valor" id="A1-val">60</span>
+            <input type="range" id="A1" min="0" max="100" value="60">
+        </label>
+
+        <label>Frequência f₁
+            <span class="valor" id="f1-val">5 Hz</span>
+            <input type="range" id="f1" min="1" max="20" value="5">
+        </label>
+
+        <label>Amplitude A₂
+            <span class="valor" id="A2-val">40</span>
+            <input type="range" id="A2" min="0" max="100" value="40">
+        </label>
+
+        <label>Frequência f₂
+            <span class="valor" id="f2-val">12 Hz</span>
+            <input type="range" id="f2" min="1" max="20" value="12">
+        </label>
+
+        <button id="btn-salvar">💾 Salvar gráficos</button>
+
+    </section>
+
+    <section class="graficos">
+        <div>
+            <h3>Sinal no tempo</h3>
+            <canvas id="canvas-tempo" width="600" height="250"></canvas>
+        </div>
+
+        <div>
+            <h3>Espectro de frequências</h3>
+            <canvas id="canvas-freq" width="600" height="250"></canvas>
+        </div>
+    </section>
+
+
+</main>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<script src="../static/js/main.js"></script>
+<script src="../static/js/fourier.js"></script>
+</body>
+</html>

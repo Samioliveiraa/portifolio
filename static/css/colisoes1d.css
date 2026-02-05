@@ -1,0 +1,298 @@
+/* ==================================================
+   SIMULAÇÕES — COLISÕES 1D
+================================================== */
+
+.simulador {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+/* --------------------------------------------------
+   TÍTULOS
+-------------------------------------------------- */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #020617;
+}
+
+.section-intro {
+    max-width: 800px;
+    font-size: 1.05rem;
+    color: #475569;
+    margin-bottom: 2.5rem;
+}
+
+/* --------------------------------------------------
+   DESCRIÇÃO TEÓRICA
+-------------------------------------------------- */
+.descricao-experimento {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 3rem;
+}
+
+.descricao-experimento h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #020617;
+}
+
+.descricao-experimento p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #334155;
+    margin-bottom: 1rem;
+}
+
+.descricao-experimento .equacao {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+}
+
+.lista-explicativa {
+    margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.lista-explicativa li {
+    margin-bottom: 0.4rem;
+    color: #1e293b;
+}
+
+/* --------------------------------------------------
+   ÁREA DA SIMULAÇÃO
+-------------------------------------------------- */
+.jogo-colisao {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* Canvas ocupa mais espaço */
+.canvas-container {
+    flex: 3;
+    min-width: 0;
+}
+
+.canvas-container canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+
+/* ---------- CONTROLES ---------- */
+.controles {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.controles h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #020617;
+}
+
+.controles label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    color: #1e293b;
+    gap: 0.3rem;
+}
+
+.controles input[type="number"] {
+    padding: 0.45rem 0.6rem;
+    border-radius: 0.4rem;
+    border: 1px solid #cbd5f5;
+    font-size: 0.95rem;
+}
+
+.controles input[type="range"] {
+    width: 100%;
+}
+
+#e-valor {
+    font-size: 0.9rem;
+    color: #475569;
+    align-self: flex-end;
+}
+
+/* ---------- BOTÕES ---------- */
+.botoes {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 0.6rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-iniciar {
+    background: #22c55e;
+    color: #022c22;
+}
+
+#btn-iniciar:hover {
+    background: #16a34a;
+}
+
+#btn-pausar {
+    background: #eab308;
+    color: #422006;
+}
+
+#btn-pausar:hover {
+    background: #ca8a04;
+}
+
+#btn-reset {
+    background: #ef4444;
+    color: #450a0a;
+}
+
+#btn-reset:hover {
+    background: #dc2626;
+}
+
+.botoes-download {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.botoes-download button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.botoes-download button:hover {
+  background: #1e40af;
+}
+/* ===============================
+   BOTÕES DE DOWNLOAD
+=============================== */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.55rem 1rem;
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    color: #1e293b;                 /* slate-800 */
+    background-color: #f8fafc;      /* slate-50 */
+
+    border: 1px solid #cbd5e1;      /* slate-300 */
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.btn-download:hover {
+    background-color: #e0e7ff;      /* indigo-100 */
+    border-color: #6366f1;          /* indigo-500 */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+}
+
+.btn-download:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* --------------------------------------------------
+   GRÁFICO
+-------------------------------------------------- */
+.grafico-container {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.grafico-container h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #020617;
+}
+
+.grafico-wrapper {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    height: 350px;
+    width: 100%;
+}
+
+.grafico-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#grafico-colisao {
+    width: 100%;
+    height: 100%;
+}
+
+/* --------------------------------------------------
+   RESPONSIVIDADE
+-------------------------------------------------- */
+@media (max-width: 900px) {
+    .jogo-colisao {
+       flex-direction: column;
+    }
+
+    .grafico-wrapper {
+        height: 280px;
+    }
+}
+
+@media (max-width: 500px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .descricao-experimento {
+        padding: 1.5rem;
+    }
+
+    .controles {
+        padding: 1.5rem;
+    }
+}

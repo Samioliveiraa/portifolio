@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Oscilador Não Linear | Samila</title>
+    <meta name="description"
+        content="Simulação computacional de um oscilador harmônico não linear resolvido numericamente pelo método de Runge–Kutta de quarta ordem.">
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/home.css">
+    <link rel="stylesheet" href="../static/css/oscilador-nao-linear.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ===== MATHJAX ===== -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="../index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                        <li><a href="../modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="../publicacoes.html">Publicações</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+                <li><a href="../contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="section simulador">
+
+    <h2 class="section-title">Oscilador Harmônico Geral Não Linear</h2>
+
+    
+    <p>
+    Este módulo apresenta uma simulação interativa de um oscilador harmônico
+    generalizado, incorporando não linearidade, amortecimento e forçamento externo.
+    O sistema é resolvido numericamente utilizando o método de Runge–Kutta de
+    quarta ordem (RK4).
+    </p>
+
+
+<!-- ===================== SIMULAÇÃO ===================== -->
+<section class="simulacao">
+
+    <div>
+        <canvas id="canvas-oscilador" width="600" height="200"></canvas>
+        <br><br>
+        <canvas id="grafico-oscilador" width="600" height="200"></canvas>
+        <p class="descricao-grafico">
+            O gráfico mostra a evolução temporal da posição do oscilador harmônico.
+            O eixo horizontal representa o tempo $t$ e o eixo vertical representa
+            a posição $x(t)$. Dependendo dos parâmetros de amortecimento, forçamento
+            e não linearidade, o movimento pode apresentar regimes periódicos,
+            quase-periódicos ou caóticos.
+        </p>
+
+    </div>
+
+    <div class="controles">
+
+        <div class="controle">
+            <label>Massa (m)</label>
+            <input id="massa" type="number" value="1" step="0.1">
+        </div>
+
+        <div class="controle">
+            <label>Constante elástica (k)</label>
+            <input id="k" type="number" value="1" step="0.1">
+        </div>
+
+        <div class="controle">
+            <label>Amplitude inicial</label>
+            <input id="amplitude" type="number" value="120" step="10">
+        </div>
+
+        <hr>
+
+        <div class="controle">
+            <label>Não linearidade (α)</label>
+            <input id="alpha" type="range" min="0" max="0.05" step="0.001" value="0.01">
+        </div>
+
+        <div class="controle">
+            <label>Amortecimento (γ)</label>
+            <input id="gamma" type="range" min="0" max="1" step="0.05" value="0.2">
+        </div>
+
+        <div class="controle">
+            <label>Força externa (F)</label>
+            <input id="forca" type="range" min="0" max="2" step="0.1" value="0.5">
+        </div>
+
+        <div class="controle">
+            <label>Frequência da força (ω)</label>
+            <input id="omega" type="range" min="0" max="3" step="0.1" value="1">
+        </div>
+
+        <div class="botoes">
+            <button class="iniciar" id="btn-iniciar">Iniciar</button>
+            <button class="pausar" id="btn-pausar">Pausar</button>
+            <button class="reset" id="btn-reset">Resetar</button>
+            <button class="salvar" id="btn-salvar">Salvar</button>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ===================== TEORIA ===================== -->
+    <h2>Descrição Teórica do Sistema</h2>
+
+    <p>
+    O oscilador harmônico simples é um dos sistemas fundamentais da física clássica,
+    descrevendo o movimento de uma partícula sujeita a uma força restauradora
+    proporcional ao deslocamento. No entanto, sistemas físicos reais frequentemente
+    exibem efeitos adicionais que tornam o comportamento mais complexo.
+    </p>
+
+    <p>
+    Nesta simulação, consideramos o chamado <strong>oscilador harmônico geral</strong>,
+    cuja equação de movimento é dada por:
+    </p>
+
+    <p style="text-align:center; font-size:1.2rem;">
+    \( m\ddot{x} + \gamma \dot{x} + kx + \alpha x^3 = F\cos(\omega t) \)
+    </p>
+
+    <p>
+    Cada termo possui um significado físico claro:
+    </p>
+
+    <ul>
+        <li><strong>\( m\ddot{x} \)</strong>: termo inercial;</li>
+        <li><strong>\( \gamma\dot{x} \)</strong>: força dissipativa (amortecimento);</li>
+        <li><strong>\( kx \)</strong>: força restauradora linear;</li>
+        <li><strong>\( \alpha x^3 \)</strong>: não linearidade do tipo Duffing;</li>
+        <li><strong>\( F\cos(\omega t) \)</strong>: forçamento periódico externo.</li>
+    </ul>
+
+    <p>
+    A presença do termo cúbico quebra a linearidade do sistema, permitindo fenômenos
+    como dependência da frequência com a amplitude, múltiplos regimes estacionários
+    e, para certos parâmetros, comportamento caótico.
+    </p>
+
+    <h2>Método Numérico: Runge–Kutta de 4ª Ordem</h2>
+
+    <p>
+    Como a equação diferencial acima não admite solução analítica geral,
+    utilizamos um método numérico. O método de Runge–Kutta de quarta ordem (RK4)
+    é um esquema explícito que fornece excelente precisão com custo computacional
+    moderado.
+    </p>
+
+    <p>
+    O sistema é reescrito como duas equações de primeira ordem:
+    </p>
+
+    <p style="text-align:center; font-size:1.1rem;">
+    \( \dot{x} = v \) <br>
+    \( \dot{v} = a(x, v, t) \)
+    </p>
+
+    <p>
+    O RK4 calcula quatro estimativas intermediárias da derivada em cada passo de
+    tempo, combinando-as de forma ponderada. Isso resulta em erro local da ordem
+    de \( \mathcal{O}(dt^5) \) e erro global da ordem de \( \mathcal{O}(dt^4) \).
+    </p>
+
+    <p>
+    Essa abordagem garante estabilidade e precisão suficientes para a exploração
+    dos regimes não lineares e forçados do sistema.
+    </p>
+
+
+
+   
+    
+
+</main>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<!-- ===== CHART.JS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- ===== JS DA SIMULAÇÃO ===== -->
+<script src="../static/js/main.js"></script>
+<script src="../static/js/oscilador-nao-linear.js"></script>
+</body>
+</html>

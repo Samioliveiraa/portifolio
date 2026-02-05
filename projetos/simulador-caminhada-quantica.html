@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Caminhada Quântica | Samila</title>
+    <meta name="description"
+          content="Simulação computacional de uma caminhada quântica unidimensional com moeda de Hadamard.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/caminhada-quantica.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ===== MATHJAX ===== -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$']]
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+
+                </ul>
+            </li>
+
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section simulador">
+
+    <!-- ===============================
+         TÍTULO
+    ================================ -->
+    <h2 class="section-title">Caminhada Quântica Unidimensional</h2>
+
+    <p class="section-intro">
+        Esta página apresenta uma simulação computacional de uma caminhada quântica
+        discreta em uma rede unidimensional, utilizando uma moeda de Hadamard.
+        O objetivo é ilustrar os efeitos de superposição e interferência quântica
+        na dinâmica do sistema.
+    </p>
+
+    <!-- ===============================
+         PARTE TEÓRICA
+    ================================ -->
+    <section class="simulador-texto">
+
+        <h3>Modelo físico</h3>
+
+        <p>
+            A caminhada quântica é o análogo quântico da caminhada aleatória clássica.
+            Enquanto no caso clássico a evolução do sistema é descrita por probabilidades,
+            na versão quântica a dinâmica é governada por operadores unitários,
+            resultando em superposição e interferência.
+        </p>
+
+        <p>
+            Considera-se uma partícula que se move em uma rede unidimensional discreta,
+            cujos estados de posição são denotados por $|x\rangle$, com $x \in \mathbb{Z}$.
+            Além do grau de liberdade espacial, a partícula possui um grau interno binário,
+            chamado de <strong>moeda quântica</strong>.
+        </p>
+
+        <p>
+            O espaço de Hilbert total do sistema é dado por:
+        </p>
+
+        $$
+        \mathcal{H} = \mathcal{H}_{\text{posição}} \otimes \mathcal{H}_{\text{moeda}}.
+        $$
+
+        <p>
+            Os estados da moeda são representados por
+            $|\uparrow\rangle$ e $|\downarrow\rangle$,
+            associados ao deslocamento para a direita e para a esquerda, respectivamente.
+        </p>
+
+        <h3>Estado quântico</h3>
+
+        <p>
+            O estado geral do sistema no instante discreto $t$ pode ser escrito como:
+        </p>
+
+        $$
+        |\psi(t)\rangle = \sum_x
+        \left[
+        a_x(t)\,|x,\uparrow\rangle +
+        b_x(t)\,|x,\downarrow\rangle
+        \right],
+        $$
+
+        <p>
+            onde $a_x(t)$ e $b_x(t)$ são amplitudes complexas que satisfazem
+            a condição de normalização:
+        </p>
+
+        $$
+        \sum_x \left( |a_x(t)|^2 + |b_x(t)|^2 \right) = 1.
+        $$
+
+        <h3>Operador moeda de Hadamard</h3>
+
+        <p>
+            A evolução temporal ocorre em passos discretos.
+            Em cada passo, aplica-se primeiro um operador moeda e,
+            em seguida, um operador de deslocamento.
+            Nesta simulação, utiliza-se a moeda de Hadamard:
+        </p>
+
+        $$
+        H = \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+        \end{pmatrix}.
+        $$
+
+        <p>
+            Este operador cria uma superposição dos estados da moeda,
+            sendo responsável pelos padrões de interferência observados
+            na caminhada quântica.
+        </p>
+
+        <h3>Operador de deslocamento e evolução temporal</h3>
+
+        <p>
+            O operador de deslocamento $S$ atua da seguinte forma:
+        </p>
+
+        $$
+        S|x,\uparrow\rangle = |x+1,\uparrow\rangle, \qquad
+        S|x,\downarrow\rangle = |x-1,\downarrow\rangle.
+        $$
+
+        <p>
+            O operador de evolução de um passo é dado por:
+        </p>
+
+        $$
+        U = S \cdot (I \otimes H),
+        $$
+
+        <p>
+            de modo que a evolução temporal do sistema obedece à relação:
+        </p>
+
+        $$
+        |\psi(t+1)\rangle = U\,|\psi(t)\rangle.
+        $$
+
+        <h3>Distribuição de probabilidade</h3>
+
+        <p>
+            A probabilidade de encontrar a partícula na posição $x$
+            no instante $t$ é dada por:
+        </p>
+
+        $$
+        P(x,t) = |a_x(t)|^2 + |b_x(t)|^2.
+        $$
+
+        <p>
+            Diferentemente da caminhada clássica, a distribuição de probabilidade
+            quântica apresenta comportamento balístico e assimétrico,
+            consequência direta da interferência quântica.
+        </p>
+
+    </section>
+
+    <!-- ===============================
+         CONTROLES
+    ================================ -->
+    <section class="controles controles-horizontal">
+
+        <div class="grupo-controles">
+            <label>
+                Passos máximos
+                <input type="number" id="passosMax" value="80" min="1" max="300">
+            </label>
+
+            <label>
+                Estado inicial
+                <select id="estadoInicial">
+                    <option value="simetrico">Simétrico</option>
+                    <option value="direita">Direita</option>
+                    <option value="esquerda">Esquerda</option>
+                </select>
+            </label>
+        </div>
+
+       <div class="grupo-botoes">
+            <button id="btn-iniciar">▶ Iniciar</button>
+            <button id="btn-pausar">⏸ Pausar</button>
+            <button id="btn-passo">⏭ Passo</button>
+            <button id="btn-reset">🔄 Resetar</button>
+            <button id="btn-salvar">💾 Salvar simulação</button>
+        </div>
+
+
+    </section>
+
+    <!-- ===============================
+         SIMULAÇÃO
+    ================================ -->
+    <section class="simulador-area">
+        <h3>Simulação</h3>
+        <div class="canvas-container">
+            <canvas id="canvas-simulacao" width="900" height="300"></canvas>
+        </div>
+    </section>
+
+    <!-- ===============================
+         GRÁFICO
+    ================================ -->
+    <section class="simulador-grafico">
+        <h3>Distribuição de Probabilidade</h3>
+        <div class="canvas-container">
+            <canvas id="canvas-grafico" width="900" height="300"></canvas>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<script src="../static/js/main.js"></script>
+<script src="../static/js/caminhada-quantica.js"></script>
+</body>
+</html>

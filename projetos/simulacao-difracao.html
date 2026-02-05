@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Difração | Samila</title>
+    <meta name="description"
+        content="Portfólio pessoal de Samila, estudante e desenvolvedora em formação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/home.css">
+    <link rel="stylesheet" href="../static/css/difracao.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+        <!-- ===== MATHJAX ===== -->
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="../index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                        <li><a href="../modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="../publicacoes.html">Publicações</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+                <li><a href="../contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="section simulador">
+
+    
+    <h2 class="section-title">Difração e Interferência de Ondas</h2>
+
+    <p class="section-intro">
+        Esta simulação ilustra o comportamento de ondas passando por fendas simples e duplas,
+        mostrando padrões de difração e interferência.
+    </p>
+
+
+    <!-- ===== TEXTO TEÓRICO ===== -->
+    <section class="simulador-texto">
+        <h3>Fenômeno de Difração</h3>
+        <p>
+            A <strong>difração</strong> ocorre quando uma onda encontra um obstáculo ou passa por uma abertura,
+            curvando-se e espalhando-se. O efeito é mais pronunciado quando o tamanho da fenda é da mesma
+            ordem de grandeza do comprimento de onda $\lambda$.
+        </p>
+        <p>
+            Em fendas simples, o padrão de intensidade $I(\theta)$ no ponto de observação é dado por:
+        </p>
+        <div class="equacao">
+        $$
+        I(\theta) = I_0 \left( \frac{\sin(\beta)}{\beta} \right)^2, \quad 
+        \beta = \frac{\pi a}{\lambda} \sin \theta
+        $$
+        </div>
+
+        <h3>Interferência em Fendas Duplas</h3>
+        <p>
+            Para duas fendas, ocorre <strong>interferência construtiva e destrutiva</strong> dependendo da diferença
+            de caminho percorrido pelas ondas. A intensidade é:
+        </p>
+        <div class="equacao">
+        $$
+        I(\theta) = I_0 \cos^2\left( \frac{\pi d}{\lambda} \sin \theta \right) 
+                     \left( \frac{\sin(\beta)}{\beta} \right)^2
+        $$
+        </div>
+        <p>
+            Onde $d$ é a distância entre as fendas, $a$ é a largura da fenda e $\theta$ é o ângulo de observação.
+        </p>
+    </section>
+
+     <!-- ===== CONTROLES ===== -->
+    <section class="controles controles-horizontal">
+
+        <label>
+            Tipo de fenda
+            <select id="tipoFenda">
+                <option value="simples">Fenda Simples</option>
+                <option value="dupla">Fenda Dupla</option>
+            </select>
+        </label>
+
+        <label>
+            Comprimento de onda
+            <input type="number" id="lambda" value="20" min="5" max="100">
+        </label>
+
+        <label>
+            Distância entre fendas (dupla)
+            <input type="number" id="distFendas" value="60" min="10" max="200">
+        </label>
+
+        <div class="botoes">
+            <button id="btn-iniciar">▶ Iniciar</button>
+            <button id="btn-pausar">⏸ Pausar</button>
+            <button id="btn-reset">🔄 Resetar</button>
+            <button id="btn-salvar">💾 Salvar</button>
+        </div>
+    </section>
+
+    <!-- ===== SIMULAÇÃO ===== -->
+    <section class="simulador-area">
+        <canvas id="canvas-difracao" width="900" height="400"></canvas>
+    </section>
+
+    <!-- ===== INTERPRETAÇÃO ===== -->
+    <section class="simulador-texto">
+        <h3>Interpretação</h3>
+        <p>
+            Ondas passando por fendas sofrem <strong>difração</strong>, espalhando-se em várias direções.
+            Quando há duas fendas, as ondas interferem, criando padrões de <strong>interferência construtiva e destrutiva</strong>.
+        </p>
+        <p>
+            É possível observar que o padrão depende do <em>comprimento de onda</em> e da <em>distância entre as fendas</em>.
+        </p>
+    </section>
+
+
+</main>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<script src="../static/js/main.js"></script>
+<script src="../static/js/difracao.js"></script>
+</body>
+</html>

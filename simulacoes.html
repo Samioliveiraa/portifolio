@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+      ">
+
+
+    <title>Simulações | Samila</title>
+    <meta name="description" content="Simulações computacionais de sistemas físicos.">
+
+    <!-- CSS base (igual ao index) -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/layout.css">
+    <link rel="stylesheet" href="static/css/components.css">
+    <link rel="stylesheet" href="static/css/pages/simulacoes.css">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <h1 class="logo">
+        <a href="../meu site/index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../meu site/index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../meu site/simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../meu site/modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="jogos.html">Jogos</a></li>
+
+                </ul>
+            </li>
+
+            <li><a href="../meu site/publicacoes.html">Publicações</a></li>
+            <li><a href="../meu site/sobre.html">Sobre</a></li>
+            <li><a href="../meu site/contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section">
+
+    <!-- ===== INTRO ===== -->
+    <h2 class="section-title">Simulações Computacionais</h2>
+
+    <p class="section-intro">
+        Simulações interativas de sistemas físicos clássicos,
+        desenvolvidas para estudo e visualização de fenômenos físicos.
+    </p>
+
+    <!-- ===== FILTROS ===== -->
+    <div class="filtros-simulacoes">
+        <button class="filtro-btn ativo" data-filtro="todas">Todas</button>
+        <button class="filtro-btn" data-filtro="oscilacoes">Oscilações</button>
+        <button class="filtro-btn" data-filtro="gravitacao">Gravitação</button>
+        <button class="filtro-btn" data-filtro="mecanicaestatistica">Mecânica Estatística</button>
+        <button class="filtro-btn" data-filtro="mecanicaclassica">Mecânica Clássica</button>
+        <button class="filtro-btn" data-filtro="mecanicaquantica">Mecânica Quântica</button>
+        <button class="filtro-btn" data-filtro="eletromagnetismo">Eletromagnetismo</button>
+        <button class="filtro-btn" data-filtro="optica">Óptica</button>
+        <button class="filtro-btn" data-filtro="circuitos">Circuitos Elétricos</button>
+    </div>
+
+    <!-- ===== LISTA DE SIMULAÇÕES ===== -->
+
+    <script>
+    const botoes = document.querySelectorAll('.filtro-btn');
+    const cards = document.querySelectorAll('.publicacao-card');
+
+    botoes.forEach(botao => {
+        botao.addEventListener('click', () => {
+
+            // botão ativo
+            botoes.forEach(b => b.classList.remove('ativo'));
+            botao.classList.add('ativo');
+
+            const filtro = botao.dataset.filtro;
+
+            cards.forEach(card => {
+                const categoria = card.dataset.categoria;
+
+                if (filtro === 'todas' || categoria === filtro) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    </script>
+
+    <div class="publicacoes-lista">
+        <div class="publicacao-card" data-categoria="gravitacao">
+            
+            <img src="../meu site/static/images/simulacoes/queda-livre-simulacao.png" alt="Pré-visualização Queda Livre" class="card-preview">
+            <h3>Queda Livre</h3>
+            <p>
+                Simulação de uma partícula sob ação da gravidade,
+                com parâmetros ajustáveis.
+            </p>
+            <p><strong>Tópicos:</strong> Gravitação</p>
+            <a href="../meu site/projetos/simulador-queda-livre.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="oscilacoes">
+            <img src="../meu site/static/images/simulacoes/pendulo-simulacao.png" alt="Pré-visualização Pêndulo Simples" class="card-preview">
+            <h3>Pêndulo Simples</h3>
+            <p>
+                Estudo do movimento oscilatório de um pêndulo
+                para diferentes condições iniciais.
+            </p>
+            <p><strong>Tópicos:</strong> Oscilações</p>
+            <a href="../meu site/projetos/simulador-pendulo.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="oscilacoes">
+            <img src="../meu site/static/images/simulacoes/massa-mola-simulacao.png" alt="Pré-visualização Massa-mola" class="card-preview">
+            <h3>Sistema Massa-Mola</h3>
+            <p>Estudo do movimento oscilatório do modelo clássico massa-mola.</p>
+            <p><strong>Tópicos:</strong> Oscilações</p>
+            <a href="../meu site/projetos/simulador-sistema-massa-mola.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="mecanicaclassica">
+            <img src="../meu site/static/images/simulacoes/simulacao-colisoes-1d.png" alt="Pré-visualização Colisões 1d" class="card-preview">
+            <h3>Colisões 1d</h3>
+            <p>Simulação da colisão de duas partículas 1d.</p>
+            <p><strong>Tópicos:</strong> Mecânica clássica</p>
+            <a href="../meu site/projetos/colisoes1d.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="mecanicaquantica">
+            <img src="../meu site/static/images/simulacoes/caminhada-quantica.png" alt="Pré-visualização Caminhada quântica" class="card-preview">
+            <h3>Caminhada Quântica</h3>
+            <p>Simulação de uma caminhada quântica discreta em uma rede unidimensional, usando a moeda Hadamard.</p>
+            <p><strong>Tópicos:</strong> Mecânica Quântica</p>
+            <a href="../meu site/projetos/simulador-caminhada-quantica.html">Em desenvolvimento</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="circuitos">
+            <img src="../meu site/static/images/simulacoes/canvasCircuito.png" alt="Pré-visualização Circuito RLC" class="card-preview">
+            <h3>Circuito RLC</h3>
+            <p>Descrição.</p>
+            <p><strong>Tópicos:</strong> Circuitos Elétricos</p>
+            <a href="../meu site/projetos/simulador-circuito-rlc.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="eletromagnetismo">
+            <img src="../meu site/static/images/simulacoes/campo_eletrico(2).png" alt="Pré-visualização Campo Elétrico" class="card-preview">
+            <h3>Carga Pontual</h3>
+            <p>Simulação do campo elétrico gerados por múltiplas cargas pontuais.</p>
+            <p><strong>Tópicos:</strong> Eletromagnetismo</p>
+            <a href="../meu site/projetos/simulador-carga-pontual.html">Abrir simulação</a>
+        </div>
+        
+
+        <div class="publicacao-card" data-categoria="mecanicaestatistica">
+            <img src="../meu site/static/images/simulacoes/caminhada_aleatoria.png" alt="Pré-visualização Caminhada aleatório" class="card-preview">
+
+            <h3>Caminhada Aleatória</h3>
+            <p>Modelo estocástico em 2D.</p>
+            <p><strong>Tópicos:</strong> Mecânica Estatística</p>
+            <a href="../meu site/projetos/simulador-caminhada-aleatória.html">Em desenvolvimento</a>
+        </div>
+
+
+
+        <div class="publicacao-card" data-categoria="optica">
+            <img src="../meu site/static/images/simulacoes/difracao_realista.png" alt="Pré-visualização Difração" class="card-preview">
+
+            <h3>Difração</h3>
+            <p>Simulação do comportamento de ondas passando por fendas simples e duplas.</p>
+            <p><strong>Tópicos:</strong> Óptica</p>
+            <a href="../meu site/projetos/simulacao-difracao.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="optica">
+            <img src="../meu site/static/images/simulacoes/refração.png" alt="Pré-visualização Refração" class="card-preview">
+            <h3>Refração</h3>
+            <p>Simulação que mostra a mudança de direção de propagação da onda segundo a Lei de Snell.</p>
+            <p><strong>Tópicos:</strong> Óptica</p>
+            <a href="../meu site/projetos/simulador-refracao.html">Abrir simulação</a>
+        </div>
+
+
+        <div class="publicacao-card" data-categoria="oscilacoes">
+            <img src="../meu site/static/images/simulacoes/oscilador-nao-linear.png" alt="Pré-visualização Mecânica clássica" class="card-preview">
+            <h3>Oscilador Não Linear</h3>
+            <p>Simulação interativa de um oscilador harmônico generalizado adicionado não linearidade.</p>
+            <p><strong>Tópicos:</strong> Oscilações</p>
+            <a href="../meu site/projetos/oscilador-nao-linear.html">Abrir simulação</a>
+        </div>
+
+        <div class="publicacao-card" data-categoria="optica">
+            <img src="../meu site/static/images/simulacoes/graficos_batimento.png" alt="Pré-visualização Transformada de Fourier" class="card-preview">
+            <h3>Transformada de Fourier</h3>
+            <p>Simulação interativa.</p>
+            <p><strong>Tópicos:</strong> Óptica</p>
+            <a href="../meu site/projetos/fourier.html">Em desenvolvimento</a>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+
+    <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="simulacoes.html">Simulações</a>
+        <a href="publicacoes.html">Publicações</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</footer>
+
+<script src="static/js/main.js"></script>
+<script src="static/js/simulador.js"></script>
+<script src="static/js/filtro-simulacoes.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Samila | Portfólio</title>
+    <meta name="description"
+        content="Portfólio pessoal de Samila, estudante e desenvolvedora em formação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/home.css">
+    <link rel="stylesheet" href="../static/css/pendulo-simples.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<!-- MathJax para equações -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']]
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="../index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                        <li><a href="../modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="../publicacoes.html">Publicações</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+                <li><a href="../contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="section simulador">
+
+    <h2 class="section-title">Pêndulo Simples</h2>
+    <p class="section-intro">
+        Simulação de um pêndulo simples sob ação da gravidade, com parâmetros ajustáveis.
+    </p>
+
+    <section class="descricao-experimento">
+        <h3>Pêndulo Simples — Modelo Físico</h3>
+
+        <p>
+            Esta simulação representa um <strong>pêndulo simples</strong>, constituído por
+            uma massa pontual <strong>\(m\)</strong> suspensa por um fio ideal,
+            inextensível e de massa desprezível, de comprimento <strong>\(L\)</strong>.
+            O movimento ocorre em um plano vertical sob a ação da gravidade.
+        </p>
+
+        <p>
+            A dinâmica do sistema é descrita pela equação diferencial não linear:
+        </p>
+
+        <div class="equacao">
+            \[
+                \ddot{\theta}(t) + \gamma\,\dot{\theta}(t)
+                + \frac{g}{L}\,\sin\theta(t) = 0
+            \]
+        </div>
+
+        <p>
+            onde <strong>\(\theta(t)\)</strong> é o ângulo formado com a vertical,
+            <strong>\(g\)</strong> é a aceleração da gravidade e
+            <strong>\(\gamma\)</strong> representa o coeficiente de dissipação,
+            associado a efeitos como resistência do ar e atrito no ponto de suspensão.
+        </p>
+
+        <p>
+            Devido ao termo senoidal, essa equação é <strong>não linear</strong> e,
+            em geral, não admite solução analítica exata. No entanto, para
+            pequenos ângulos (\(|\theta| \ll 1\)), pode-se utilizar a aproximação
+            \(\sin\theta \approx \theta\), obtendo-se:
+        </p>
+
+        <div class="equacao">
+            \[
+                \ddot{\theta}(t) + \gamma\,\dot{\theta}(t)
+                + \frac{g}{L}\,\theta(t) = 0
+            \]
+        </div>
+
+        <p>
+            Nessa aproximação, o sistema se comporta como um
+            <strong>oscilador harmônico amortecido</strong>.
+            Na ausência de dissipação (\(\gamma = 0\)), o movimento é periódico,
+            com frequência angular natural:
+        </p>
+
+        <div class="equacao">
+            \[
+                \omega_0 = \sqrt{\frac{g}{L}}
+            \]
+        </div>
+
+        <p>
+            e período de oscilação:
+        </p>
+
+        <div class="equacao">
+            \[
+                T = 2\pi\sqrt{\frac{L}{g}}
+            \]
+        </div>
+
+        <p>
+            Quando a dissipação é considerada (\(\gamma > 0\)), a amplitude das oscilações
+            decresce com o tempo, caracterizando um regime de
+            <strong>movimento amortecido</strong>. Dependendo do valor de
+            <strong>\(\gamma\)</strong>, o sistema pode apresentar comportamento
+            subamortecido, criticamente amortecido ou superamortecido.
+        </p>
+
+        <h4>Energias do sistema</h4>
+
+        <p>
+            As energias cinética e potencial gravitacional do pêndulo são dadas,
+            respectivamente, por:
+        </p>
+
+        <div class="equacao">
+            \[
+                E_c = \frac{1}{2}\,m\,(L\dot{\theta})^2
+            \]
+        </div>
+
+        <div class="equacao">
+            \[
+                E_p = m\,g\,L\,(1 - \cos\theta)
+            \]
+        </div>
+
+        <p>
+            Na ausência de dissipação, a energia mecânica total
+            <strong>\(E = E_c + E_p\)</strong> permanece constante ao longo do tempo.
+            Quando a dissipação é ativada, observa-se a conversão progressiva da energia
+            mecânica em outras formas, resultando na diminuição da amplitude e na
+            perda de energia total do sistema.
+        </p>
+
+        <p class="observacao">
+            💡 <strong>Sugestão:</strong> calcule analiticamente o período do pêndulo
+            para pequenos ângulos e compare com o valor obtido numericamente na simulação.
+            Em seguida, investigue como a dissipação afeta a evolução da energia total.
+        </p>
+    </section>
+
+    
+    <section class="experimento">
+
+        <div class="simulacao-canvas">
+            <canvas id="canvas-pendulo" width="600" height="420"></canvas>
+        </div>
+
+        
+
+        <div class="jogo-controles">
+
+            <div class="jogo-grupo">
+            <label>
+                Comprimento L (m)
+                <input type="number" id="comprimento" min="0.5" max="3" step="0.1" value="1.5">
+            </label>
+
+            <label>
+                Ângulo inicial (°)
+                <input type="number" id="angulo" min="5" max="80" value="30">
+            </label>
+
+            <label>
+                Gravidade g (m/s²)
+                <input type="number" id="gravidade" value="9.81" step="0.1">
+            </label>
+            <label>
+                Dissipação (γ)
+                <input type="number" id="dissipacao" min="0" max="1" step="0.01" value="0">
+            </label>
+
+            </div>
+
+            <div class="jogo-acoes">
+
+                <div class="acoes-grupo">
+                    <span class="acoes-titulo">Simulação</span>
+
+                    <button id="btn-iniciar" class="btn-principal">
+                    ▶ Iniciar
+                    </button>
+
+                    <button id="btn-pausar" class="btn-secundario">
+                    ⏸ Pausar
+                    </button>
+
+                    <button id="btn-reset" class="btn-outline">
+                    ↺ Resetar
+                    </button>
+                </div>
+
+                <div class="acoes-grupo">
+                    <span class="acoes-titulo">Exportar</span>
+
+                    <button id="btn-salvar-canvas" class="btn-exportar">
+                    🖼 Salvar Simulação
+                    </button>
+
+                    <button id="btn-salvar-grafico" class="btn-exportar">
+                    📈 Salvar Gráfico
+                    </button>
+                </div>
+
+            </div>
+                <div class="grafico-container">
+                    <h3>Energias do sistema</h3>
+
+                <div class="grafico-wrapper">
+                    <canvas id="grafico-energia" width="800" height="420"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    
+
+
+
+
+</main>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<script src="../static/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/pendulo-simples.js"></script>
+
+</body>
+</html>

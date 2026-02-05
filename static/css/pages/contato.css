@@ -1,0 +1,15 @@
+.contato-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contato-form input,
+.contato-form textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+

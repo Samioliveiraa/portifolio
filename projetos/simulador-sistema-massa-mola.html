@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Sistema Massa–Mola | Samila</title>
+    <meta name="description"
+        content="Simulação computacional do sistema massa–mola com análise de energia e dissipação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/simulacoes.css">
+    <link rel="stylesheet" href="../static/css/massa-mola.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ===== MATHJAX ===== -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- =====================================================
+     CONTEÚDO
+====================================================== -->
+<main class="section simulador">
+
+    <h2 class="section-title">Sistema Massa–Mola</h2>
+    <p class="section-intro">
+        Simulação computacional de um sistema massa–mola unidimensional, permitindo o
+        estudo do movimento harmônico simples e do movimento amortecido.
+    </p>
+
+    <!-- ===== DESCRIÇÃO TEÓRICA ===== -->
+
+    <section class="descricao-experimento">
+        <p>
+            O sistema massa–mola unidimensional constitui um modelo clássico fundamental
+            para o estudo de oscilações mecânicas e sistemas dinâmicos lineares. Sua dinâmica
+            é descrita por uma equação diferencial linear de segunda ordem:
+        </p>
+
+        <p class="equacao">
+            \[
+                m\,\frac{d^2x}{dt^2} + \gamma\,\frac{dx}{dt} + kx = 0
+            \]
+        </p>
+
+        <p>
+            Nessa expressão, <strong>\(x(t)\)</strong> representa o deslocamento da massa em
+            relação à posição de equilíbrio, <strong>\(m\)</strong> é a massa do corpo,
+            <strong>\(k\)</strong> é a constante elástica da mola, associada à lei de Hooke,
+            e <strong>\(\gamma\)</strong> é o coeficiente de dissipação, que modela forças
+            resistivas proporcionais à velocidade.
+        </p>
+
+        <p>
+            No caso não dissipativo (\(\gamma = 0\)), o sistema realiza
+            <em>oscilações harmônicas simples</em>, caracterizadas por uma frequência angular
+            natural dada por:
+        </p>
+
+        <p class="equacao">
+            \[
+                \omega_0 = \sqrt{\frac{k}{m}}
+            \]
+        </p>
+
+        <p>
+            A presença de dissipação (\(\gamma \neq 0\)) modifica o comportamento dinâmico
+            do sistema, levando a três regimes distintos, determinados pela relação entre
+            o coeficiente de dissipação e os parâmetros inerciais e elásticos do sistema:
+        </p>
+
+        <ul class="lista-teorica">
+            <li>
+                <strong>Regime subamortecido</strong>
+                \(\left(\gamma &lt; 2\sqrt{km}\right)\): o sistema apresenta oscilações com
+                amplitude decrescente no tempo.
+            </li>
+            <li>
+                <strong>Regime criticamente amortecido</strong>
+                \(\left(\gamma = 2\sqrt{km}\right)\): o sistema retorna ao equilíbrio no
+                menor tempo possível, sem oscilações.
+            </li>
+            <li>
+                <strong>Regime superamortecido</strong>
+                \(\left(\gamma &gt; 2\sqrt{km}\right)\): o retorno ao equilíbrio ocorre de
+                forma não oscilatória e mais lenta.
+            </li>
+        </ul>
+
+        <p>
+            No regime subamortecido, a solução da equação diferencial envolve uma oscilação
+            com frequência angular efetiva, denominada frequência amortecida:
+        </p>
+
+        <p class="equacao">
+            \[
+                \omega_d = \sqrt{\omega_0^2 - \left(\frac{\gamma}{2m}\right)^2}
+            \]
+        </p>
+
+        <p>
+            O período das oscilações observadas nesse regime é dado por:
+        </p>
+
+        <p class="equacao">
+            \[
+                T = \frac{2\pi}{\omega_d}
+            \]
+        </p>
+
+        <p>
+            A simulação permite visualizar a evolução temporal do deslocamento, bem como
+            analisar quantitativamente as energias cinética
+            \(\left(E_c = \frac{1}{2}mv^2\right)\), potencial elástica
+            \(\left(E_p = \frac{1}{2}kx^2\right)\) e da energia mecânica total do sistema.
+            Na presença de dissipação, observa-se a não conservação da energia mecânica,
+            evidenciando a conversão de energia mecânica em outras formas, como energia
+            térmica.
+        </p>
+    </section>
+
+
+
+
+    <!-- ===== EXPERIMENTO ===== -->
+    <section class="experimento">
+
+        <!-- SIMULAÇÃO -->
+        <div class="simulacao-canvas">
+            <canvas id="canvas-mola" width="700" height="420"></canvas>
+        </div>
+
+        <!-- GRÁFICO -->
+        <div class="grafico-container">
+            <h3>Energias do sistema</h3>
+            <div class="grafico-wrapper">
+                <canvas id="grafico-energia"></canvas>
+            </div>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="jogo-controles">
+
+            <!-- PARÂMETROS -->
+            <div class="controles">
+                <div class="controle">
+                    <label for="massa">Massa \(m\) (kg)</label>
+                    <input type="number" id="massa" value="1" step="0.1" min="0.1">
+                </div>
+
+                <div class="controle">
+                    <label for="constante">Constante da mola \(k\) (N/m)</label>
+                    <input type="number" id="constante" value="15" step="0.5">
+                </div>
+
+                <div class="controle">
+                    <label for="posicao">Posição inicial \(x_0\) (m)</label>
+                    <input type="number" id="posicao" value="0.2" step="0.01">
+                </div>
+
+                <div class="controle">
+                    <label for="velocidade">Velocidade inicial \(v_0\) (m/s)</label>
+                    <input type="number" id="velocidade" value="0" step="0.1">
+                </div>
+
+                <div class="controle">
+                    <label for="dissipacao">Dissipação \(\gamma\)</label>
+                    <input type="number" id="dissipacao" value="0" step="0.01" min="0">
+                </div>
+            </div>
+
+            <!-- AÇÕES -->
+            <div class="jogo-acoes">
+
+                <div class="acoes-grupo">
+                    <span class="acoes-titulo">Simulação</span>
+                    <button id="btn-iniciar" class="btn-principal">Iniciar</button>
+                    <button id="btn-pausar" class="btn-secundario">Pausar</button>
+                    <button id="btn-reset" class="btn-outline">Resetar</button>
+                </div>
+
+                <div class="acoes-grupo">
+                    <span class="acoes-titulo">Exportar</span>
+                    <button id="salvar-canvas" class="btn-exportar">
+                        Salvar simulação (PNG)
+                    </button>
+                    <button id="salvar-grafico" class="btn-exportar">
+                        Salvar gráfico (PNG)
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<!-- ===== JS ===== -->
+<script src="../static/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/massa-mola.js"></script>
+
+</body>
+</html>

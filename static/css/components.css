@@ -1,0 +1,94 @@
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a::after {
+    content: " ▾";
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: block !important;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-width: 200px;
+    padding: 0.4rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: 0.2s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu ul,
+.dropdown-menu li {
+    display: block !important;
+    list-style: none;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1rem;
+}
+
+.dropdown-menu a:hover {
+    background: var(--bg-main);
+    color: var(--accent);
+}
+
+/* BOTÕES */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    border-radius: 6px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+}
+
+.btn-accent {
+    background: var(--accent);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+}
+
+.exportacoes {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exportacoes button {
+  padding: 0.6rem 1rem;
+  border: none;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.exportacoes button:hover {
+  background: #4f46e5;
+}
+
+

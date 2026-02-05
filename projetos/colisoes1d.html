@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Colisões Unidimensionais | Samila</title>
+
+    <meta name="description"
+        content="Simulação computacional de colisões unidimensionais com conservação do momento linear, análise da energia cinética e coeficiente de restituição.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/simulacoes.css">
+    <link rel="stylesheet" href="../static/css/colisoes1d.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ===== MATHJAX ===== -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- ===== CHART.JS ===== -->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- =====================================================
+     CONTEÚDO PRINCIPAL
+====================================================== -->
+<main class="section simulador">
+
+    <!-- ===== TÍTULO ===== -->
+    <header class="simulador-header">
+        <h2 class="section-title">Colisões Unidimensionais</h2>
+
+        <p class="section-intro">
+            Esta simulação computacional permite investigar colisões em uma dimensão,
+            analisando a conservação do momento linear, o comportamento da energia
+            cinética e o papel do coeficiente de restituição.
+        </p>
+    </header>
+
+    <!-- ===============================
+         DESCRIÇÃO TEÓRICA
+    ================================ -->
+    <section class="descricao-experimento">
+
+        <h3>Modelo físico</h3>
+
+        <p>
+            Consideram-se duas partículas puntiformes de massas \(m_1\) e \(m_2\),
+            movendo-se ao longo de uma mesma direção retilínea. Durante o intervalo
+            de colisão, o sistema é tratado como isolado, garantindo a conservação
+            do <strong>momento linear total</strong>.
+        </p>
+
+        <div class="equacao">
+        \[
+            p = m v
+            \qquad \Rightarrow \qquad
+            p_{\text{antes}} = p_{\text{depois}}
+        \]
+        </div>
+
+        <p>
+            O caráter da colisão é determinado pelo <strong>coeficiente de restituição</strong>
+            \(e\), definido como a razão entre a velocidade relativa após e antes da colisão:
+        </p>
+
+        <div class="equacao">
+        \[
+            e = \frac{v_2' - v_1'}{v_1 - v_2}
+        \]
+        </div>
+
+        <ul class="lista-explicativa">
+            <li>\(e = 1\): colisão perfeitamente elástica</li>
+            <li>\(0 &lt; e &lt; 1\): colisão parcialmente inelástica</li>
+            <li>\(e = 0\): colisão perfeitamente inelástica</li>
+        </ul>
+
+        <p>
+            A energia cinética total do sistema é expressa por:
+        </p>
+
+        <div class="equacao">
+        \[
+            E_c = \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2
+        \]
+        </div>
+
+        <p>
+            Em colisões elásticas, tanto o momento linear quanto a energia cinética
+            permanecem constantes. Já em colisões inelásticas, parte da energia mecânica
+            é dissipada em outras formas de energia, como deformações internas ou calor.
+        </p>
+
+    </section>
+
+    <!-- ===============================
+         SIMULAÇÃO
+    ================================ -->
+    <!-- CONTROLES -->
+<section class="controles controles-horizontal">
+    <h3>Parâmetros</h3>
+
+    <label>
+        Massa 1 (kg)
+        <input type="number" id="m1" value="1" step="0.1">
+    </label>
+
+    <label>
+        Massa 2 (kg)
+        <input type="number" id="m2" value="1" step="0.1">
+    </label>
+
+    <label>
+        Velocidade 1 (m/s)
+        <input type="number" id="v1" value="2" step="0.1">
+    </label>
+
+    <label>
+        Velocidade 2 (m/s)
+        <input type="number" id="v2" value="-1" step="0.1">
+    </label>
+
+    <label class="range">
+        Coef. restituição (e)
+        <input type="range" id="e" min="0" max="1" step="0.01" value="1">
+        <span id="e-valor">1.00</span>
+    </label>
+
+    <div class="botoes">
+        <button id="btn-iniciar">Iniciar</button>
+        <button id="btn-pausar">Pausar</button>
+        <button id="btn-reset">Resetar</button>
+        <button id="btn-salvar-simulacao" class="btn-download">Baixar simulação</button>
+    </div>
+</section>
+
+<!-- SIMULAÇÃO -->
+<section class="canvas-container">
+    <canvas id="canvas-colisao" width="1200" height="300"></canvas>
+</section>
+
+
+    <!-- ===============================
+         GRÁFICO
+    ================================ -->
+    <section class="grafico-container">
+
+        <header>
+            <h4>Energia cinética e momento linear</h4>
+            <p class="grafico-descricao">
+                Evolução temporal da energia cinética total e do momento linear do sistema.
+            </p>
+        </header>
+
+        <div class="grafico-wrapper">
+            <canvas id="grafico-colisao"
+                    aria-label="Gráfico de energia e momento linear"></canvas>
+        </div>
+
+        <div class="botoes-grafico">
+            <button id="btn-salvar-grafico" class="btn-download">Baixar gráfico</button>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<footer class="footer">
+    <p>© 2026 — Samila</p>
+
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<!-- ===== JS ===== -->
+<script src="../static/js/main.js"></script>
+<script src="../static/js/colisoes1d.js"></script>
+
+</body>
+</html>

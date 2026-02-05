@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Queda Livre | Samila</title>
+    <meta name="description" content="Simulação computacional do experimento de queda livre">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/simulacoes.css">
+    <link rel="stylesheet" href="../static/css/modelos-teoricos/leis-de-newton.css">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- ===== MATHJAX ===== -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#" aria-haspopup="true">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html">Simulações</a></li>
+                    <li><a href="../modelos.html" class="active">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+            
+                </ul>
+            </li>
+
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section simulador">
+
+    <h2 class="section-title">Mecânica Newtoniana</h2>
+    <p class="section-intro">
+        As Leis de Newton constituem a base da mecânica clássica e descrevem
+        como o movimento de um corpo está relacionado às forças que atuam sobre ele.
+        Essas leis são válidas em referenciais inerciais e se aplicam a uma vasta gama
+        de fenômenos físicos.
+    </p>
+
+
+    <!-- =====================================================
+         CONTEXTO
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Contexto físico</h3>
+
+        <p>
+            A mecânica newtoniana descreve o movimento de partículas e corpos extensos
+            a partir de grandezas fundamentais como posição, velocidade, aceleração,
+            massa e força.
+        </p>
+
+        <p>
+            O estado de movimento de uma partícula é determinado pela sua posição
+            $\vec{r}(t)$, cuja derivada temporal fornece a velocidade
+            $\vec{v}(t)$ e, subsequentemente, a aceleração $\vec{a}(t)$:
+        </p>
+
+        <div class="equacao">
+        \[
+            \vec{v}(t) = \frac{d\vec{r}}{dt}, \qquad
+            \vec{a}(t) = \frac{d\vec{v}}{dt}
+        \]
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRIMEIRA LEI
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Primeira Lei de Newton — Lei da Inércia</h3>
+
+        <p>
+            Um corpo permanece em repouso ou em movimento retilíneo uniforme
+            se a resultante das forças que atuam sobre ele for nula.
+        </p>
+
+        <div class="equacao">
+        \[
+            \sum \vec{F} = 0 \;\; \Rightarrow \;\; \vec{a} = 0
+        \]
+        </div>
+
+        <p>
+            Essa lei define os <strong>referenciais inerciais</strong> e introduz o conceito
+            de inércia: a tendência de um corpo resistir a mudanças em seu estado de movimento.
+        </p>
+
+        <h4>Exemplo</h4>
+
+        <p>
+            Um bloco deslizando sobre uma superfície sem atrito mantém sua velocidade constante,
+            pois não há força resultante atuando sobre ele.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEGUNDA LEI
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Segunda Lei de Newton — Princípio Fundamental da Dinâmica</h3>
+
+        <p>
+            A aceleração de um corpo é proporcional à força resultante aplicada
+            e inversamente proporcional à sua massa.
+        </p>
+
+        <div class="equacao">
+        \[
+            \sum \vec{F} = m \vec{a}
+        \]
+        </div>
+
+        <p>
+            Esta é a lei central da mecânica clássica, pois fornece a equação de movimento
+            do sistema.
+        </p>
+
+        <h4>Exemplo resolvido</h4>
+
+        <p>
+            Um bloco de massa $m = 2\,\text{kg}$ sofre a ação de uma força constante
+            $\vec{F} = 10\,\text{N}$.
+        </p>
+
+        <div class="equacao">
+        \[
+            a = \frac{F}{m} = \frac{10}{2} = 5 \;\text{m/s}^2
+        \]
+        </div>
+
+        <p>
+            Logo, o bloco adquire uma aceleração de $5\,\text{m/s}^2$ na direção da força.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         TERCEIRA LEI
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Terceira Lei de Newton — Ação e Reação</h3>
+
+        <p>
+            Para toda força de ação exercida por um corpo sobre outro,
+            existe uma força de reação de mesma intensidade, mesma direção
+            e sentido oposto.
+        </p>
+
+        <div class="equacao">
+        \[
+            \vec{F}_{AB} = - \vec{F}_{BA}
+        \]
+        </div>
+
+        <p>
+            As forças de ação e reação atuam em corpos diferentes e, portanto,
+            não se anulam.
+        </p>
+
+        <h4>Exemplo</h4>
+
+        <p>
+            Ao empurrar uma parede, você exerce uma força sobre ela,
+            enquanto a parede exerce uma força de mesma intensidade sobre você.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         DIAGRAMA DE CORPO LIVRE
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Diagramas de Corpo Livre</h3>
+
+        <p>
+            Para aplicar corretamente as Leis de Newton, é essencial identificar
+            todas as forças que atuam sobre o corpo de interesse.
+        </p>
+
+        <p>
+            O diagrama de corpo livre representa o corpo isolado e todas as forças
+            externas aplicadas a ele, como peso, força normal, tensão e atrito.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONEXÃO COM SIMULAÇÕES
+    ===================================================== -->
+    <section class="simulador-texto">
+
+        <h3>Conexão com simulações computacionais</h3>
+
+        <p>
+            As Leis de Newton são frequentemente implementadas em simulações
+            computacionais por meio da integração numérica das equações de movimento.
+        </p>
+
+        <p>
+            Métodos como Euler, Verlet e Runge-Kutta permitem estudar sistemas
+            complexos, incluindo forças não lineares, amortecimento e forçamentos externos.
+        </p>
+
+    </section>
+
+
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<!-- JS da simulação -->
+<script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+<script src="https://unpkg.com/gif-capture@1.0.0/build/gif-capture.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gif-capture/dist/gif-capture.min.js"></script>
+
+</body>
+</html>

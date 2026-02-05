@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+      ">
+
+
+    <title>Jogos | Samila</title>
+    <meta name="description"
+        content="Portfólio pessoal de Samila, estudante e desenvolvedora em formação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/layout.css">
+    <link rel="stylesheet" href="static/css/components.css">
+    <link rel="stylesheet" href="static/css/pages/simulacoes.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="simulacoes.html">Simulações</a></li>
+                        <li><a href="modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html" class="active">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="publicacoes.html">Publicações</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="section">
+
+
+        <h2 class="section-title">Jogos</h2>
+
+        <p class="section-intro">
+            Jogos para estudo de sistemas físicos,
+            desenvolvidos para ajudar a compreender os fenômenos físicos da natureza.
+        </p>
+
+    <!-- ===== FILTROS ===== -->
+        <div class="filtros-simulacoes">
+            <button class="filtro-btn ativo" data-filtro="todas">Todas</button>
+            <button class="filtro-btn" data-filtro="oscilacoes">Oscilações</button>
+            <button class="filtro-btn" data-filtro="gravitacao">Gravitação</button>
+            <button class="filtro-btn" data-filtro="mecanicaestatistica">Mecânica Estatística</button>
+            <button class="filtro-btn" data-filtro="mecanicaclassica">Mecânica Clássica</button>
+            <button class="filtro-btn" data-filtro="mecanicaquantica">Mecânica Quântica</button>
+            <button class="filtro-btn" data-filtro="eletromagnetismo">Eletromagnetismo</button>
+            <button class="filtro-btn" data-filtro="optica">Óptica</button>
+            <button class="filtro-btn" data-filtro="circuitos">Circuitos Elétricos</button>
+        </div>
+
+        <!-- ===== LISTA DE SIMULAÇÕES ===== -->
+
+        <script>
+            const botoes = document.querySelectorAll('.filtro-btn');
+            const cards = document.querySelectorAll('.publicacao-card');
+
+            botoes.forEach(botao => {
+                botao.addEventListener('click', () => {
+
+                    // botão ativo
+                    botoes.forEach(b => b.classList.remove('ativo'));
+                    botao.classList.add('ativo');
+
+                    const filtro = botao.dataset.filtro;
+
+                    cards.forEach(card => {
+                        const categoria = card.dataset.categoria;
+
+                        if (filtro === 'todas' || categoria === filtro) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <div class="publicacoes-lista">
+            <div class="publicacao-card" data-categoria="mecanicaclassica">
+                
+                <img src="../meu site/static/images/jogos/lancamento-projeteis(3).png" alt="Pré-visualização Lançamento de projéteis" class="card-preview">
+                <h3>Lançamento de projéteis</h3>
+                <p>
+                    Acerte o alvo lançando o projétil (em construção).
+                </p>
+                <p><strong>Tópicos:</strong> Mecânica Clássica</p>
+                <a href="../meu site/jogos/jogo-lancando-projeteis.html">Abrir simulação interativa</a>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<script src="static/js/main.js"></script>
+<script src="static/js/simulador.js"></script>
+<script src="static/js/filtro-simulacoes.js"></script>
+</body>
+</html>

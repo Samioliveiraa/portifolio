@@ -1,0 +1,166 @@
+/* ========================================
+   CAMPO ELÉTRICO - CSS
+======================================== */
+
+/* ===== Área do simulador ===== */
+.simulador {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    color: #020617;
+}
+
+.simulador h2.section-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.simulador .section-intro {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* ===== Painel de controles horizontal ===== */
+.controles-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f7ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.controles-horizontal .grupo-controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.controles-horizontal label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.controles-horizontal input[type="number"],
+.controles-horizontal select {
+    margin-top: 5px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    width: 100px;
+}
+
+/* ===== Botões ===== */
+.controles-horizontal .grupo-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.controles-horizontal button {
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.controles-horizontal button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== Área do canvas ===== */
+.simulador-area,
+.simulador-grafico {
+    margin-bottom: 30px;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: #fefefe;
+}
+
+canvas {
+    display: block;
+    width: 900px;
+    height: auto;
+}
+
+/* ===== Texto teórico e interpretativo ===== */
+.simulador-texto {
+    background-color: #f5f7ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.simulador-texto h3 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.simulador-texto p {
+    margin-bottom: 10px;
+}
+
+/* ===== Equações ===== */
+.simulador-texto p,
+.simulador-texto div.equacao {
+    font-size: 0.95rem;
+}
+
+.simulador-texto div.equacao {
+    background-color: #e0e7ff;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+    .controles-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controles-horizontal .grupo-controles {
+        gap: 10px;
+    }
+
+    .controles-horizontal input[type="number"],
+    .controles-horizontal select {
+        width: 100%;
+    }
+
+    .canvas-container {
+        max-width: 100%;
+    }
+}

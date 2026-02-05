@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Lançamento de projéteis | Samila</title>
+    <meta name="description" content="Simulação computacional interativa do lançamento de projéteis e trajetória balística">
+
+    <!-- CSS base -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/pages/simulacoes.css">
+
+    <!-- CSS exclusivo do jogo -->
+    <link rel="stylesheet" href="../static/css/jogos/projeteis.css">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+    <h1 class="logo">
+        <a href="../index.html">Samila F. da S. Oliveira</a>
+    </h1>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Projetos</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                    <li><a href="../modelos.html">Modelos Teóricos</a></li>
+                    <li><a href="../jogos.html">Jogos</a></li>
+                </ul>
+            </li>
+            <li><a href="../publicacoes.html">Publicações</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section">
+    <h2 class="section-title">Lançamento de projéteis</h2>
+    <p class="section-intro">
+        Simulação computacional interativa baseada no modelo físico de trajetória balística.
+        Ideal para comparação entre soluções analíticas e numéricas.
+    </p>
+
+    <section class="simulacao-container jogo-projeteis">
+
+        <!-- CANVAS -->
+        <div class="simulacao-canvas">
+            <canvas id="canvas-projeteis" width="900" height="450"></canvas>
+        </div>
+
+        <!-- PAINEL -->
+        <aside class="simulacao-controles jogo-controles">
+
+            <!-- PARÂMETROS -->
+            <div class="painel-bloco">
+                <h3>Parâmetros físicos</h3>
+
+                <div class="grid-inputs">
+                    <label>
+                        Altura inicial (m)
+                        <input type="number" id="alturaInicial" value="0" step="0.5">
+                    </label>
+
+                    <label>
+                        Velocidade inicial (m/s)
+                        <input type="number" id="velocidade" value="20" step="1">
+                    </label>
+
+                    <label>
+                        Ângulo (°)
+                        <input type="number" id="angulo" value="45" step="1">
+                    </label>
+
+                    <label>
+                        Gravidade (m/s²)
+                        <input type="number" id="gravidade" value="9.8" step="0.1">
+                    </label>
+                </div>
+            </div>
+
+            <!-- VISUAL -->
+            <div class="painel-bloco">
+                <h3>Visualização</h3>
+
+                <label>
+                    Cor do projétil
+                    <input type="color" id="corProjetil" value="#ef4444">
+                </label>
+
+                <label>
+                    Fundo
+                    <select id="fundo">
+                        <option value="claro">Claro</option>
+                        <option value="escuro">Escuro</option>
+                        <option value="grade">Grade</option>
+                    </select>
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="arrasto">
+                    Resistência do ar
+                </label>
+            </div>
+
+            <!-- CONTROLES -->
+            <div class="painel-bloco">
+                <h3>Controles</h3>
+                <div class="acoes">
+                    <button id="lancar" class="btn-primary">Lançar</button>
+                    <button id="resetar" class="btn-secondary">Resetar</button>
+                    <button id="salvarPNG" class="btn-outline">Salvar PNG</button>
+                </div>
+            </div>
+
+            <!-- ESTADO -->
+            <div class="painel-bloco estado-atual">
+                <h3>Estado do sistema</h3>
+                <p>Tempo: <span id="tempo">0.00</span> s</p>
+                <p>Alcance: <span id="alcance">0.00</span> m</p>
+                <p>Altura máxima: <span id="hmax">0.00</span> m</p>
+                <p>Velocidade: <span id="velAtual">0.00</span> m/s</p>
+            </div>
+
+        </aside>
+    </section>
+
+    <!-- EQUAÇÕES -->
+    <section class="equacoes-section">
+        <h3>Modelo teórico</h3>
+        <p>Equações do movimento sem resistência do ar:</p>
+        <div class="equacoes">
+            x(t) = v₀ cos(θ) t<br>
+            y(t) = h₀ + v₀ sen(θ) t − (1/2) g t²
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 - Samila</p>
+    <nav class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../simulacoes.html">Simulações</a>
+        <a href="../publicacoes.html">Publicações</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+    </nav>
+</footer>
+
+<!-- JS -->
+<script src="../static/js/jogos/jogo-projeteis.js"></script>
+
+</body>
+</html>

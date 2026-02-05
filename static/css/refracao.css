@@ -1,0 +1,184 @@
+/* =====================================================
+   PÁGINA — REFRAÇÃO
+===================================================== */
+
+.simulador {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* ===============================
+   TÍTULO E INTRODUÇÃO
+=============================== */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* ===============================
+   TEXTO TEÓRICO
+=============================== */
+.simulador-texto {
+    max-width: 900px;
+    margin: 3rem auto;
+    line-height: 1.7;
+    color: #1e293b;
+}
+
+.simulador-texto h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    margin-top: 2.2rem;
+    color: #020617;
+}
+
+.simulador-texto p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.lista-explicativa {
+    margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.lista-explicativa li {
+    margin-bottom: 0.4rem;
+}
+
+/* Equações */
+.equacao {
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+/* ===============================
+   CONTROLES
+=============================== */
+.controles-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: flex-end;
+    justify-content: center;
+
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+}
+
+.controles-horizontal label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #020617;
+}
+
+.controles-horizontal input {
+    margin-top: 0.3rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 0.9rem;
+    width: 130px;
+}
+
+/* ===============================
+   BOTÕES
+=============================== */
+.botoes {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.botoes button {
+    border: none;
+    border-radius: 10px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.botoes button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    opacity: 0.95;
+}
+
+.botoes button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+/* ===============================
+   SIMULAÇÃO
+=============================== */
+.simulador-area {
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.simulador-area canvas {
+    background: #020617;
+    border-radius: 16px;
+    border: 2px solid #cbd5f5;
+    box-shadow: 0 20px 40px rgba(2, 6, 23, 0.25);
+}
+
+/* ===============================
+   INTERPRETAÇÃO
+=============================== */
+.simulador-texto:last-of-type {
+    background: #f1f5f9;
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 6px solid #3b82f6;
+}
+
+/* ===============================
+   RESPONSIVO
+=============================== */
+@media (max-width: 768px) {
+    .controles-horizontal {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controles-horizontal label,
+    .controles-horizontal input {
+        width: 100%;
+    }
+
+    .botoes {
+        justify-content: center;
+    }
+
+    .simulador-area canvas {
+        width: 100%;
+        height: auto;
+    }
+}

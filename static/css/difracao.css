@@ -1,0 +1,78 @@
+/* ===== CONTROLES ===== */
+.controles-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controles-horizontal label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.controles-horizontal input,
+.controles-horizontal select {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    font-size: 1rem;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.botoes button {
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.botoes button:hover {
+    background-color: #2563eb;
+}
+
+/* ===== CANVAS ===== */
+.simulador-area canvas {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border: 2px solid #cbd5f5;
+    border-radius: 10px;
+    background-color: #f0f4ff;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* ===== TEXTO TEÓRICO ===== */
+.simulador-texto {
+    max-width: 900px;
+    margin: 20px auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.simulador-texto h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.equacao {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.05rem;
+    background-color: #eef2ff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}

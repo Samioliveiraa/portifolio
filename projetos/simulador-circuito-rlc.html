@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ===== META ===== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Samila | Portfólio</title>
+    <meta name="description"
+        content="Portfólio pessoal de Samila, estudante e desenvolvedora em formação.">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/layout.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/circuito-rlc.css">
+
+    <!-- ===== FONTES ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER / MENU
+    ====================================================== -->
+    <header class="header">
+        <h1 class="logo">
+            <a href="../index.html">Samila F. da S. Oliveira</a>
+        </h1>
+
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" aria-haspopup="true">
+                        Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../simulacoes.html" class="active">Simulações</a></li>
+                        <li><a href="../modelos.html" >Modelos Teóricos</a></li>
+                        <li><a href="jogos.html">Jogos</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="../publicacoes.html">Publicações</a></li>
+                <li><a href="../sobre.html">Sobre</a></li>
+                <li><a href="../contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main class="section simulador">
+
+    <h2 class="section-title">Circuito RLC</h2>
+    <p class="section-intro">
+        Simulação interativa de um circuito RLC série, resolvida numericamente
+        pelo método de Runge-Kutta de 4ª ordem.
+    </p>
+
+    <section class="simulador-texto">
+        <h3>Descrição do sistema</h3>
+        <p>
+            O circuito RLC série é um dos sistemas fundamentais estudados em eletromagnetismo
+            e eletrônica, pois apresenta comportamento oscilatório amortecido, análogo a sistemas
+            mecânicos como o oscilador massa–mola com atrito.
+        </p>
+        <p>
+            Nesta simulação, considera-se um circuito RLC sem fonte externa, analisando a evolução
+            temporal da carga no capacitor e da corrente elétrica após uma condição inicial imposta.
+        </p>
+    </section>
+
+    <section class="simulador-texto">
+        <h3>Modelo matemático</h3>
+        <p>
+            Aplicando a Lei das Malhas de Kirchhoff ao circuito RLC série, obtém-se a equação diferencial
+            de segunda ordem para a carga no capacitor:
+        </p>
+
+        <div class="equacao">
+            L
+            <span class="frac">
+                <sup>d²q</sup>
+                <sub>dt²</sub>
+            </span>
+            + R
+            <span class="frac">
+                <sup>dq</sup>
+                <sub>dt</sub>
+            </span>
+            +
+            <span class="frac">
+                <sup>1</sup>
+                <sub>C</sub>
+            </span>
+            q = 0
+        </div>
+
+        <p>
+            Introduzindo a corrente elétrica como <em>i(t) = dq/dt</em>, o problema pode ser escrito
+            como um sistema de equações diferenciais de primeira ordem:
+        </p>
+
+        <div class="equacao">
+            <p>dq/dt = i</p>
+            <p>di/dt = −(R/L)i − (1/LC)q</p>
+        </div>
+    </section>
+
+    <section class="simulador-texto">
+        <h3>Regimes do circuito</h3>
+        <p>
+            O comportamento dinâmico do circuito depende da relação entre os parâmetros
+            R, L e C. Definindo
+        </p>
+
+        <div class="equacao">
+            α = R / (2L), &nbsp;&nbsp;
+            ω₀ = 1 / √(LC)
+        </div>
+
+        <ul>
+            <li><strong>Subamortecido</strong> (α &lt; ω₀): oscilações amortecidas</li>
+            <li><strong>Criticamente amortecido</strong> (α = ω₀)</li>
+            <li><strong>Superamortecido</strong> (α &gt; ω₀): relaxação sem oscilações</li>
+        </ul>
+    </section> 
+
+    <h3>Simulação interativa</h3>
+
+    <!-- ===== CONTROLES ===== -->
+    <div class="simulador-controles">
+
+        <div class="controle">
+            <label for="R">Resistência R (Ω)</label>
+            <input id="R" type="number" step="0.1" value="10">
+        </div>
+
+        <div class="controle">
+            <label for="L">Indutância L (H)</label>
+            <input id="L" type="number" step="0.01" value="0.5">
+        </div>
+
+        <div class="controle">
+            <label for="C">Capacitância C (F)</label>
+            <input id="C" type="number" step="0.001" value="0.01">
+        </div>
+
+        <div class="controle">
+            <label for="q0">Carga inicial q₀</label>
+            <input id="q0" type="number" step="0.1" value="1">
+        </div>
+
+        <div class="controle">
+            <label for="i0">Corrente inicial i₀</label>
+            <input id="i0" type="number" step="0.1" value="0">
+        </div>
+        <div class="controle-botoes">
+            <button type="button" onclick="iniciar()">▶ Iniciar</button>
+            <button type="button" onclick="pausar()">⏸ Pausar</button>
+            <button type="button" onclick="reiniciar()">⟲ Reiniciar</button>
+            <button type="button" onclick="baixarImagem('canvasCircuito')">📥 Circuito</button>
+            <button type="button" onclick="baixarImagem('canvasGrafico')">📥 Gráfico</button>
+        </div>
+
+    </div>
+
+    <!-- ===== VISUALIZAÇÃO ===== -->
+    <div class="simulador-visual">
+
+        <div class="canvas-box">
+            <h3>Circuito</h3>
+            <canvas id="canvasCircuito" width="500" height="300"></canvas>
+        </div>
+
+        <div class="canvas-box">
+            <h3>Corrente × Tempo</h3>
+            <canvas id="canvasGrafico" width="500" height="300"></canvas>
+        </div>
+
+    </div>
+
+</main>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© 2026 - Samila</p>
+
+        <nav class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../simulacoes.html">Simulações</a>
+            <a href="../publicacoes.html">Publicações</a>
+            <a href="../sobre.html">Sobre</a>
+            <a href="../contato.html">Contato</a>
+        </nav>
+    </footer>
+
+<script src="../static/js/main.js"></script>
+<script src="../static/js/circuito-rlc.js"></script>
+</body>
+</html>
