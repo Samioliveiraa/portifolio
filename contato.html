@@ -93,50 +93,30 @@
 
             <!-- FORMULÁRIO -->
             <form
-            class="contato-form"
-            id="formContato"
-            action="https://formsubmit.co/samilaferraz9@gmail.com"
-            method="POST"
+              class="contato-form"
+              action="https://mail.google.com/mail/"
+              method="GET"
+              target="_blank"
             >
                 <label for="nome">Nome</label>
-                <input
-                    id="nome"
-                    name="nome"
-                    type="text"
-                    placeholder="Seu nome"
-                    required
-                >
-
+                <input id="nome" name="su" type="text" placeholder="Seu nome" required>
+            
                 <label for="email">Email</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Seu email"
-                    required
-                >
-
+                <input id="email" name="cc" type="email" placeholder="Seu email" required>
+            
                 <label for="mensagem">Mensagem</label>
                 <textarea
                     id="mensagem"
-                    name="mensagem"
+                    name="body"
                     placeholder="Sua mensagem"
                     rows="5"
                     required
                 ></textarea>
-
-                <!-- Extras úteis -->
-                <input type="hidden" name="_subject" value="Contato pelo Portfólio">
-                <input type="hidden" name="_captcha" value="false">
-
-                <input
-                    type="hidden"
-                    name="_redirect"
-                    value="https://samioliveiraa.github.io/portifolio/obrigada.html"
-                >
-                
+            
+                <!-- email -->
+                <input type="hidden" name="to" value="samilaferraz9@gmail.com">
+            
                 <button type="submit">Enviar</button>
-                
             </form>
 
 
