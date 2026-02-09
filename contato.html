@@ -93,7 +93,12 @@
             </div>
 
             <!-- FORMULÁRIO -->
-            <form class="contato-form" id="formContato">
+            <form
+            class="contato-form"
+            id="formContato"
+            action="https://formsubmit.co/samila.oliveira@fis.ufal.br"
+            method="POST"
+            >
                 <label for="nome">Nome</label>
                 <input
                     id="nome"
@@ -121,8 +126,18 @@
                     required
                 ></textarea>
 
+                <!-- Extras úteis -->
+                <input type="hidden" name="_subject" value="Contato pelo Portfólio">
+                <input type="hidden" name="_captcha" value="false">
+
                 <button type="submit">Enviar</button>
+                <input
+                    type="hidden"
+                    name="_next"
+                    value="https://samioliveiraa.github.io/portifolio/obrigado.html"
+                    >
             </form>
+
 
         </div>
     </section>
