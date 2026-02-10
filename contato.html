@@ -157,13 +157,29 @@
 <script>
 const form = document.getElementById("formContato");
 
-form.addEventListener("submit", function () {
-    setTimeout(() => {
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+        await fetch("https://formsubmit.co/ajax/samilaferraz9@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
         window.location.href =
           "https://samioliveiraa.github.io/portifolio/obrigada.html";
-    }, 800);
+
+    } catch (error) {
+        alert("Erro ao enviar a mensagem. Tente novamente.");
+    }
 });
 </script>
+
 
 </body>
 </html>
