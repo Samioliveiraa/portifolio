@@ -93,28 +93,30 @@
 
             <!-- FORMULÁRIO -->
             <form
-              class="contato-form"
-              action="https://mail.google.com/mail/"
-              method="GET"
-              target="_blank"
+                class="contato-form"
+                id="formContato"
+                action="https://formsubmit.co/samilaferraz9@gmail.com"
+                method="POST"
             >
                 <label for="nome">Nome</label>
-                <input id="nome" name="su" type="text" placeholder="Seu nome" required>
+                <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
             
                 <label for="email">Email</label>
-                <input id="email" name="cc" type="email" placeholder="Seu email" required>
+                <input id="email" name="email" type="email" placeholder="Seu email" required>
             
                 <label for="mensagem">Mensagem</label>
                 <textarea
                     id="mensagem"
-                    name="body"
+                    name="mensagem"
                     placeholder="Sua mensagem"
                     rows="5"
                     required
                 ></textarea>
             
                 <!-- email -->
-                <input type="hidden" name="to" value="samilaferraz9@gmail.com">
+                <input type="hidden" name="_subject" value="Contato pelo Portfólio">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_redirect" value="https://samioliveiraa.github.io/portifolio/obrigada.html">
             
                 <button type="submit">Enviar</button>
             </form>
